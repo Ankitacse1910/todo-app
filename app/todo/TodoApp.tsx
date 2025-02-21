@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AddTodo } from '../components/AddTodo';
-import { Filter } from '../components/Filter';
-import { TodoItem } from '../components/TodoItem';
+import { AddTodo } from '../containers/AddTodo';
+import { Filter } from '../containers/Filter';
+import { TodoItem } from '../containers/TodoItem';
 import { ProgressBar } from '../components/ProgressBar';
 import type { Todo, FilterType } from '../types/todo';
 
@@ -11,7 +11,6 @@ export function TodoApp() {
   const [loading, setLoading] = useState(true);
   const [newTodoText, setNewTodoText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isAddingTodo, setIsAddingTodo] = useState(false);
 
   useEffect(() => {
     const savedTodos = localStorage.getItem('todos');
@@ -21,7 +20,7 @@ export function TodoApp() {
       fetch('https://dummyjson.com/todos?limit=10')
         .then(res => res.json())
         .then(data => {
-          const formattedTodos = data.todos.map(todo => ({
+          const formattedTodos = data.todos.map((todo: { todo: any; completed: any; }) => ({
             id: Date.now() + Math.floor(Math.random() * 1000),
             todo: todo.todo,
             completed: todo.completed,

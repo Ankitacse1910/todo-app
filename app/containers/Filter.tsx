@@ -1,3 +1,4 @@
+import CustomButton from "~/components/CustomButton";
 import type { FilterProps } from "../types/todo";
 
 export function Filter({ filters, selected, onChange }: FilterProps) {
@@ -5,7 +6,8 @@ export function Filter({ filters, selected, onChange }: FilterProps) {
     <div className="flex justify-center gap-2 p-1 bg-gray-100/50 dark:bg-gray-700/50 
       rounded-lg backdrop-blur-sm">
       {filters.map((filter) => (
-        <button
+        <CustomButton
+          type="button"
           key={filter}
           onClick={() => onChange(filter as 'all' | 'pending' | 'completed')}
           className={`px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer
@@ -15,7 +17,7 @@ export function Filter({ filters, selected, onChange }: FilterProps) {
             }`}
         >
           {filter}
-        </button>
+        </CustomButton>
       ))}
     </div>
   );

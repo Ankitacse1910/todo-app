@@ -29,3 +29,26 @@ export interface ProgressBarProps {
   completed: number;
   total: number;
 } 
+
+export interface CustomButtonProps {
+  type: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  key?: string;
+}
+
+export interface CheckboxProps {
+  checked: boolean;
+  onChange: () => void;
+  className?: string;
+}
+
+export interface TextInputProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  error?: string;
+  disabled?: boolean;
+}
